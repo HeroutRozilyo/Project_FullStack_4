@@ -1,58 +1,61 @@
 import React, { useState } from 'react';
+import '../src/css/KeyBoard.css';
 
-function App() {
+const App = () => {
   const [text, setText] = useState('');
+  const [isEmojiKeyboard, setIsEmojiKeyboard] = useState(false);
 
-  const handleKeyPress = (char) => {
-    setText(text + char);
+  const handleKeyPress = (key) => {
+    setText(text + key);
   };
 
-  const handleBackspaceClick = () => {
+  const handleBackspace = () => {
     setText(text.slice(0, -1));
+  };
+
+  const handleEnter = () => {
+    setText(text + '\n');
+  };
+
+  const handleSpace = () => {
+    setText(text + ' ');
   };
 
   const handleEmojiClick = (emoji) => {
     setText(text + emoji);
   };
 
-  const hebrewKeyboardLayout = [
-    ['ק', 'ו', 'א', 'ה', 'ד', 'ג', 'כ', 'י', 'ט', 'ח'],
-    ['ש', 'ז', 'ס', 'ב', 'הּ', 'נ', 'מ', 'צ', 'ת', 'ץ'],
-    ['פ', 'ע', 'ר', 'כּ', 'ל', 'ך', 'ף', 'ן', 'ם', ','],
-    ['-', '_', '!', '?', "'", '"', '(', ')', ' '],
-  ];
+  const toggleKeyboard = () => {
+    setIsEmojiKeyboard(!isEmojiKeyboard);
+  };
 
-  const emojiKeyboardLayout = [
-    ['😀', '😊', '😂', '😍', '👍', '❤️', '🤔', '🤷', '💩', '🎉'],
-    ['🐶', '🐱', '🐼', '🦁', '🦄', '🐙', '🐳', '🍔', '🍕', '🍰'],
-    ['🍎', '🍇', '🍌', '🍉', '🍓', '🍆', '🍅', '🍟', '🍿', '🍺'],
-    ['🌞', '🌈', '🌹', '🌺', '🌻', '🍁', '🍂', '🍃', '🎃', '🎄'],
-  ];
+  const virtualKeys = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z', 'X', 'C', 'V', 'B', 'N', 'M'];
+
+  const emojiKeys = ['😀', '😂', '😍', '👍', '👎', '💩', '🍔', '🍕', '🍟', '🌮', '🍣', '🍩', '❤️', '👀', '🌞', '🌈', '🚀', '🎉', '🎁'];
 
   return (
-    <div>
-      <div>
-        {hebrewKeyboardLayout.map((row, index) => (
-          <div key={index}>
-            {row.map((char, index) => (
-              <button key={index} onClick={() => handleKeyPress(char)}>{char}</button>
-            ))}
-          </div>
-        ))}
-        <button onClick={handleBackspaceClick}>Backspace</button>
+    <div className="App">
+      <textarea className="text-editor" value={text} onChange={(e) => setText(e.target.value)}></textarea>
+      <div className="keyboard">
+        {isEmojiKeyboard ?
+          emojiKeys.map((emoji) => (
+            <button key={emoji} onClick={() => handleEmojiClick(emoji)}>
+              {emoji}
+            </button>
+          )) :
+          virtualKeys.map((key) => (
+            <button key={key} onClick={() => handleKeyPress(key)}>
+              {key}
+            </button>
+          ))
+        }
+        <button onClick={handleBackspace}>Delete</button>
+        <button onClick={handleEnter}>Enter</button>
+        <button onClick={handleSpace}>Space</button>
+        <button onClick={toggleKeyboard}>{isEmojiKeyboard ? 'Virtual Keyboard' : 'Emoji Keyboard'}</button>
       </div>
-      <div>
-        {emojiKeyboardLayout.map((row, index) => (
-          <div key={index}>
-            {row.map((emoji, index) => (
-              <button key={index} onClick={() => handleEmojiClick(emoji)}>{emoji}</button>
-            ))}
-          </div>
-        ))}
-      </div>
-      <div>{text}</div>
     </div>
   );
-}
+};
 
 export default App;

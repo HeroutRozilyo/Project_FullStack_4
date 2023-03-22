@@ -1,0 +1,63 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.text-editor {
+  width: 50%;
+  height: 300px;
+  padding: 10px;
+  font-size: 18px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+.keyboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.keyboard button {
+  margin: 5px;
+  padding: 10px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+}
+
+.keyboard button:hover {
+  background-color: #3e8e41;
+}
+
+.keyboard button:active {
+  background-color: #3e8e41;
+  transform: translateY(2px);
+}
+
+.keyboard button:last-child {
+  background-color: #f44336;
+}
+
+.keyboard button:last-child:hover {
+  background-color: #d32f2f;
+}
+
+.keyboard button:last-child:active {
+  background-color: #d32f2f;
+  transform: translateY(2px);
+}
+
+.keyboard button:focus {
+  box-shadow: 0 0 0 2px #4CAF50;
+}
