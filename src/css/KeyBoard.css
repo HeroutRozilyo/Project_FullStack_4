@@ -1,63 +1,87 @@
+/* Keyboard styles */
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.key-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+button {
+  border: none;
+  border-radius: 5px;
+  
+
+  margin: 5px;
+  padding: 10px;
+  font-size:14px;
+  background-color: #f2f2f2;
+  color: #333;
+  cursor: pointer;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+  white-space: nowrap;
+  overflow:visible;
+  text-overflow:clip;
+}
+
+button:hover {
+  background-color: #e6e6e6;
+}
+
+.emoji-keyboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.keyboard-toggle {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #333;
+  cursor: pointer;
+}
+
+.keyboard-toggle:hover {
+  text-decoration: underline;
+}
+
+.english-keyboard button {
+  width: auto;
+  height: auto;
+}
+
+.hebrew-keyboard button {
+  width: 35px;
+}
+
+/* Text editor styles */
+.text-editor {
+  width: 100%;
+  height: 150px;
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  cursor:alias;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+  caret-color: black;
+}
+
+.text-editor:focus {
+  outline: none;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* App container styles */
 .App {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background-color: #f5f5f5;
-}
-
-.text-editor {
-  width: 50%;
-  height: 300px;
-  padding: 10px;
-  font-size: 18px;
-  border: 2px solid #ccc;
-  border-radius: 5px;
-  outline: none;
-}
-
-.keyboard {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 10px;
-}
-
-.keyboard button {
-  margin: 5px;
-  padding: 10px;
-  font-size: 16px;
-  color: #fff;
-  background-color: #4CAF50;
-  border: none;
-  border-radius: 5px;
-  outline: none;
-  cursor: pointer;
-}
-
-.keyboard button:hover {
-  background-color: #3e8e41;
-}
-
-.keyboard button:active {
-  background-color: #3e8e41;
-  transform: translateY(2px);
-}
-
-.keyboard button:last-child {
-  background-color: #f44336;
-}
-
-.keyboard button:last-child:hover {
-  background-color: #d32f2f;
-}
-
-.keyboard button:last-child:active {
-  background-color: #d32f2f;
-  transform: translateY(2px);
-}
-
-.keyboard button:focus {
-  box-shadow: 0 0 0 2px #4CAF50;
+  margin: 20px;
 }
