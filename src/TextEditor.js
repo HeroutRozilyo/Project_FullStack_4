@@ -1,6 +1,6 @@
 import React from 'react';
 import '../src/css/KeyBoard.css';
-import {virtualKeys} from '../src/KeyBords.js'
+import {EnglishKey,HebrewKeys,EmojiKeys} from '../src/KeyBords.js'
 
 class App extends React.Component {
   constructor(props) {
@@ -11,17 +11,16 @@ class App extends React.Component {
       isEngKeyBoard: true,
       isEmojiKeyboard: false,
       isCapsLockOn:false,
+      virtualKeys:EnglishKey,
+      direction: 'ltr' // or 'rtl'
     };
 
     
 
-    this.emojiKeys = ['😀', '😃', '😄', '😁', '😆', '😅', '😂', '🤣', '😊', '😇', '🙂', '🙃', '😉', '😌', '😍', '🥰', '😘', '😗', '😙', '😚', '😋', '😛', '😝', '😜', '🤪', '🤨', '🧐', '🤓', '😎'];
-
-    this.hebrewKeys = ['פ', 'ם', 'ן', 'ו', 'ה', 'ד', 'ג', 'ב', 'א', 'ש', 'ס', 'ז', 'ח', 'ט', 'י', 'כ', 'ל', 'מ', 'נ', 'צ', 'ק', 'ר', 'ת', 'ף'];
+    
 
     this.handleKeyPress = this.handleKeyPress.bind(this);
-    this.handleEmojiClick = this.handleEmojiClick.bind(this);
-    this.handleKeyboardChange = this.handleKeyboardChange.bind(this);
+    
   }
 
   handleKeyPress(key) {
@@ -47,6 +46,34 @@ class App extends React.Component {
       case 'space':
         newText += ' ';
         break;
+        case 'Hebrew':
+           this.setState({virtualKeys:HebrewKeys});
+            this.setState({isEngKeyBoard:!this.state.isEngKeyBoard});
+            if(this.state.isEmojiKeyboard){
+                this.setState({isEmojiKeyboard:!this.state.isEmojiKeyboard});
+            }
+            break;
+        
+        case 'English':
+            this.setState({virtualKeys:EnglishKey});
+            this.setState({
+                isEngKeyBoard:!this.state.isEngKeyBoard
+                });
+                if(this.state.isEmojiKeyboard){
+                    this.setState({isEmojiKeyboard:!this.state.isEmojiKeyboard});
+                }
+            break;
+        
+        case '😀':
+            this.setState({isEmojiKeyboard:!this.state.isEmojiKeyboard});
+            break;
+        case '←':
+            this.setState({direction:'rtl'});
+            break;
+        case '→':
+            this.setState({direction:'ltr'});
+            break;
+
       default:
         if(this.state.isCapsLockOn){ newText+=key.toUpperCase();}
          else newText += key;
@@ -58,39 +85,26 @@ class App extends React.Component {
     });
   }
 
-  handleEmojiClick(emoji) {
-    const newText = this.state.text + emoji;
-    this.setState({
-      text: newText,
-    });
-  }
-
-  handleKeyboardChange() {
-    const isEngKeyBoard = !this.state.isEngKeyBoard;
-    const isEmojiKeyboard = !this.state.isEmojiKeyboard;
-
-    this.setState({
-      isEngKeyBoard: isEngKeyBoard,
-      isEmojiKeyboard: isEmojiKeyboard,
-    });
-  }
+  
 
   render() {
     return (
       <div className="App">
-        <textarea className="text-editor" autofocus  value={this.state.text} onChange={(e) => this.setState({ text: e.target.value })}></textarea>
+        <textarea className="text-editor" dir={this.state.direction}  value={this.state.text} onChange={(e) => this.setState({ text: e.target.value })}></textarea>
 <div className="keyboard">
 {this.state.isEmojiKeyboard ? (
 <div className="emoji-keyboard">
-{this.emojiKeys.map((emoji) => (
-<button key={emoji} onClick={() => this.handleEmojiClick(emoji)}>
+{EmojiKeys.map((keyRow,rowIndex)=><div key={rowIndex} className="key-row">
+    {keyRow.map((emoji) => (
+<button key={emoji} onClick={() => this.handleKeyPress(emoji)}>
 {emoji}
 </button>
 ))}
 </div>
-) : (
+)}
+</div>) : (
 <div className={this.state.isEngKeyBoard ? 'english-keyboard' : 'hebrew-keyboard'}>
-{virtualKeys.map((keyRow, rowIndex) => (
+{this.state.virtualKeys.map((keyRow, rowIndex) => (
 <div key={rowIndex} className="key-row">
 {keyRow.map((key) => (
 <button key={key} onClick={() => this.handleKeyPress(key)}>
@@ -101,11 +115,10 @@ class App extends React.Component {
 ))}
 </div>
 )}
-<div className="keyboard-toggle" onClick={this.handleKeyboardChange}>
-{this.state.isEmojiKeyboard ? 'ABC' : this.state.isEngKeyBoard ? 'עבר' : 'ABC'}
+
 </div>
 </div>
-</div>
+
 );
 }
 }
