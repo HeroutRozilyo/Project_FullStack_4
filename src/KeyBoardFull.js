@@ -12,7 +12,8 @@ import {EnglishKey,HebrewKeys,EmojiKeys} from './KeyBords.js'
       isEmojiKeyboard: false,
       isCapsLockOn:false,
       virtualKeys:EnglishKey,
-      direction: 'ltr' // or 'rtl'
+      direction: 'ltr' ,// or 'rtl'
+      
     };
 
     
@@ -22,6 +23,7 @@ import {EnglishKey,HebrewKeys,EmojiKeys} from './KeyBords.js'
     this.handleKeyPress = this.handleKeyPress.bind(this);
     
   }
+  
 
   handleKeyPress(key) {
     let newText = this.state.text;
@@ -90,7 +92,7 @@ import {EnglishKey,HebrewKeys,EmojiKeys} from './KeyBords.js'
   render() {
     return (
       <div className="App">
-        <textarea className="text-editor" dir={this.state.direction}  value={this.state.text} onChange={(e) => this.setState({ text: e.target.value })}></textarea>
+       <textarea className="text-editor" dir={this.state.direction} style={{ color: this.props.textColorProp }} value={this.state.text} onChange={(e) => this.setState({ text: e.target.value })}></textarea>
 <div className="keyboard">
 {this.state.isEmojiKeyboard ? (
 <div className="emoji-keyboard">
