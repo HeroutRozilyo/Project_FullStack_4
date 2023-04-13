@@ -1,18 +1,10 @@
 import React, { Component } from "react";
 import './css/ToolBarAll.css'
 class TollBarAll extends Component {
-  
-    constructor(props) {
-        super(props);
-        
-        };
-      
-    
-    
+  //no need constructor
       makeTextUppercase = () => {
         const { spans } = this.props;
         
-      
         spans.forEach(span => {
           const text = span.textContent;
           span.textContent = text.toUpperCase();
@@ -41,13 +33,6 @@ class TollBarAll extends Component {
         });
         this.props.deleteAll([]);
       };
-
-      
-  
-    
-  
-
- 
 
   render() {
    

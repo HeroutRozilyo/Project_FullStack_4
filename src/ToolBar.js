@@ -22,15 +22,8 @@ class Toolbar extends Component {
 
   handleStyleChange = (styleKey, value) => {
     const { onFormat } = this.props;
-    
-    const selection = window.getSelection();
-    if (selection && selection.rangeCount > 0) {
-      const range = selection.getRangeAt(0);
-      onFormat(styleKey, value, this.state.changeForAll); // Pass styleKey, value, and range to the onFormat function
-    } else {
       onFormat(styleKey, value, this.state.changeForAll); // Pass styleKey, value, and null as range to the onFormat function
-    }
-
+    
     // Update the selected style in the state
     this.setState(prevState => ({
       selectedStyle: {

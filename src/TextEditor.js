@@ -8,7 +8,6 @@ class TextEditor extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        isEmoji:false,
       spans: [], // Store spans with different styles
       selectedStyle: {
         fontSize: "16px",
@@ -31,6 +30,7 @@ class TextEditor extends Component {
     this.updateSpans(text);
   }
 
+  //change style
   handleFormatChange = (styleKey, value, all) => {
     this.setState({ selectedStyle: { ...this.state.selectedStyle, [styleKey]: value } }, () => {
         if (all) {
@@ -45,14 +45,14 @@ class TextEditor extends Component {
       });
   };
   
-
+//every key
   updateSpans = (text) => {
     const { spans, selectedStyle } = this.state;
     const div = this.editorRef.current;
     const lastSpan = spans[spans.length - 1];
     let lastCharacter;
     
-    // Extract the last character from the text
+    // Extract the last character from the text (emoji or text)
     if(/^[\uD800-\uDFFF]$/.test(text.slice(-1))){
         lastCharacter =text.slice(text.length - 2)
     }
@@ -62,7 +62,6 @@ class TextEditor extends Component {
     // If no spans exist or the style has changed, create a new span
     if (!lastSpan || ((!this.areStylesEqual(lastSpan.style, selectedStyle))&&(lastSpan.textContent.length<=text.length))) {
       // Create a new span and set its style properties
-     
       const span = document.createElement("span");
       // List of style properties to assign
 const styleProperties = ['fontSize','color','fontStyle','fontWeight','textDecorationLine','fontFamily','backgroundColor' ];
@@ -79,7 +78,7 @@ const styleProperties = ['fontSize','color','fontStyle','fontWeight','textDecora
         if (lastSpanNew.textContent === "") {this.delteSpan();}});
     } else {
         lastSpan.textContent = text;
-      if(lastSpan.textContent==="")this.delteSpan()
+      if(lastSpan.textContent==="")this.delteSpan()//for backspace
     }
   };
   
@@ -100,7 +99,8 @@ const styleProperties = ['fontSize','color','fontStyle','fontWeight','textDecora
         this.updateLastStayle("normal")});
      
     }
-  }
+  } 
+  // for backspace when span delete
   updateLastStayle=(style)=>{
     if(style!=="normal"){
       this.setState({selectedStyle:style})
@@ -131,17 +131,11 @@ const styleProperties = ['fontSize','color','fontStyle','fontWeight','textDecora
       
     );
   };
-  
-  
-  
-
-  handleKeyPress = (text) => {
-    this.updateSpans(text);
-  }
-
+  //upper and Lower
   makeTextUppercase=(spansNew)=>{
     this.setState({spans:spansNew});
   }
+  //delete all
   deleteAll=(spansNew)=>{
     
     this.setState({spans:spansNew});
@@ -175,7 +169,7 @@ const styleProperties = ['fontSize','color','fontStyle','fontWeight','textDecora
         
         <KeyBoardEBE
           editorRef={this.editorRef}
-          handleKeyPress={this.handleKeyPress}
+          handleKeyPress={this.updateSpans}
           spans={this.state.spans} 
           className="keyboard-content" // Apply a class to the keyboard div
         />
