@@ -1,0 +1,18 @@
+body {
+    background-color: #3b3b3b; /* Update with desired background color */
+  }
+.toolbar-all-container {
+    display: flex;
+    flex-direction: column; /* Set flex direction to column to stack buttons vertically */
+    justify-content: center; /* Align buttons vertically at the center */
+    align-items: center; /* Align buttons horizontally at the center */
+    padding: 10px;
+    background-color:  #3b3b3b;
+    flex-shrink: 0;
+    width: 10%; /* Set width to 30% to position it on the right side */
+  }
+  
+  .toolbar-all-container button {
+    margin-bottom: 10px; /* Add margin bottom between buttons */
+  }
+  

@@ -1,0 +1,95 @@
+.text-editor-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .toolbar {
+    flex-grow: 0;
+    padding: 10px;
+    background-color: #2f2e2e;
+    color: #fff;
+    /* Additional styles for the toolbar */
+  }
+  
+  .DivAllAndText {
+    display: flex;
+    height: 300vh;
+  }
+  
+  .editor-content {
+    flex-grow: 1;
+    padding: 0px;
+    margin-left: 10%;
+    overflow-y: auto;
+    border: 2px solid #ccc;
+    resize: both;
+    white-space: pre-wrap;
+    outline: none;
+    background-color: #f9f9f9;
+    font-size: 14px;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  }
+  
+  .toolbar-all {
+    padding: 10px;
+    background-color: #f2f2f2;
+    flex-shrink: 0;
+    width: 5%;
+  }
+  
+  .keyboard-content {
+    flex-grow: 0;
+    padding: 10px;
+    background-color: #3b3b3b;
+    
+  }
+  
+  .keyboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .key-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+  }
+  
+  button {
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 12px;
+    font-size: 16px;
+    background-color: #f2f2f2;
+    color: #333;
+    cursor: pointer;
+    box-shadow: 0px 2px 5px rgba(219, 214, 214, 0.2);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #e6e6e6;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .keyboard-toggle {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #333;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .keyboard-toggle:hover {
+    text-decoration: underline;
+    color: #666;
+  }
+  

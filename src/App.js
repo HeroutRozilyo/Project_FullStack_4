@@ -1,3 +1,4 @@
+ import "myStdie.css"
 import logo from './logo.svg';
 import './App.css';
 

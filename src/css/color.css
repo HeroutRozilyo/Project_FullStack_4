@@ -1,37 +1,56 @@
-.textColorSelector {
-    position: absolute;
-    left: 0;
-    top: 200px;
+/* Toolbar.css */
+
+.toolbar {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #2f2e2e;
+    border-bottom: 1px solid #2f2e2e;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
   }
   
-  .textColorButton {
-    margin-bottom: 10px;
-    padding: 5px 10px;
+  .toolbar button,
+  .toolbar select {
+    margin-right: 10px;
+    padding: 8px 12px;
+    font-size: 16px;
     border: none;
-    border-radius: 5px;
+    background-color: #f9f9f9;
+    color: #333;
     cursor: pointer;
+    transition: background-color 0.3s ease;
   }
   
-  .textColorButton.red {
-    background-color: red;
-    color: white;
+  .toolbar button:hover,
+  .toolbar select:hover {
+    background-color: #e0e0e0;
   }
   
-  .textColorButton.green {
-    background-color: green;
-    color: white;
+  .toolbar select {
+    width: 150px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
   }
   
-  .textColorButton.blue {
-    background-color: blue;
-    color: white;
+  .toolbar select:focus {
+    outline: none;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
   }
   
-  .textColorButton.black {
-    background-color: white;
-    color: black;
-    border: 1px solid black;
+  .toolbar select option {
+    font-size: 16px;
+  }
+  
+  .toolbar u {
+    text-decoration: underline;
+  }
+  
+  .toolbar strong {
+    font-weight: bold;
+  }
+  
+  .toolbar em {
+    font-style: italic;
   }
   
