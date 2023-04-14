@@ -26,6 +26,9 @@
   .toolbar select:hover {
     background-color: #e0e0e0;
   }
+  .toolbar.backroundColor{
+    max-width: 200px;;
+  }
   
   .toolbar select {
     width: 150px;

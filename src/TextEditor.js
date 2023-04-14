@@ -41,6 +41,7 @@ class TextEditor extends Component {
             });
             return { spans: updatedSpans };
           });
+          this.editorRef.current.focus();
         }
       });
   };
@@ -79,6 +80,8 @@ const styleProperties = ['fontSize','color','fontStyle','fontWeight','textDecora
     } else {
         lastSpan.textContent = text;
       if(lastSpan.textContent==="")this.delteSpan()//for backspace
+
+      this.editorRef.current.focus();
     }
   };
   
@@ -134,12 +137,14 @@ const styleProperties = ['fontSize','color','fontStyle','fontWeight','textDecora
   //upper and Lower
   makeTextUppercase=(spansNew)=>{
     this.setState({spans:spansNew});
+    this.editorRef.current.focus();
   }
   //delete all
   deleteAll=(spansNew)=>{
     
     this.setState({spans:spansNew});
     this.updateLastStayle("normal")
+    this.editorRef.current.focus();
   }
 
   render() {

@@ -15,13 +15,14 @@
   .DivAllAndText {
     display: flex;
     height: 300vh;
+    
   }
   
   .editor-content {
     flex-grow: 1;
     padding: 0px;
     margin-left: 10%;
-    overflow-y: auto;
+    overflow-y: auto; /* Enable vertical scrolling */
     border: 2px solid #ccc;
     resize: both;
     white-space: pre-wrap;
@@ -30,7 +31,10 @@
     font-size: 14px;
     width: 100%;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-  }
+    /* Add fixed height for scrolling */
+    height: 200px; /* Set the desired height for the div */
+}
+
   
   .toolbar-all {
     padding: 10px;
