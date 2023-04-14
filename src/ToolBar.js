@@ -76,10 +76,11 @@ class Toolbar extends Component {
   <option value="lightblue" style={{ color: 'lightblue', backgroundColor: 'black' }}>Light Blue</option>
   <option value="lightgreen" style={{ color: 'lightgreen', backgroundColor: 'black' }}>Light Green</option>
         </select>
-        <select
+        <select className="backroundColor"
           value={backgroundColor}
           onChange={(e) => this.handleStyleChange("backgroundColor", e.target.value)}
         >
+           <option value="" >Background Color</option>
           <option value="black" style={{ backgroundColor: 'black', color:'white' }}>Black</option>
   <option value="red" style={{ backgroundColor: 'red' }}>Red</option>
   <option value="blue" style={{ backgroundColor: 'blue' }}>Blue</option>
