@@ -1,5 +1,6 @@
 Readme: Text Editor Application
-![WhatsApp Image 2023-08-01 at 19 56 45](https://github.com/HeroutRozilyo/FullStack4/assets/73179974/20acf717-994e-44b5-84f5-812dc7a52cab)
+![WhatsApp Image 2023-08-01 at 19 58 11](https://github.com/HeroutRozilyo/FullStack4/assets/73179974/929f18b7-7feb-4697-a65e-9028f7db386f)
+
 
 Welcome to the Text Editor Application! This application allows users to type characters with a variety of components and options to customize their text according to their preferences. The text editor is designed to be modular, allowing easy extension and addition of additional features in the future.
 
